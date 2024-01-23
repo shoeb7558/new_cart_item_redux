@@ -4,7 +4,8 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState: {
     isVisible: false,
-    notification: null
+    notification: null,
+    items: [],
   },
   reducers: {
     toggleCartVisibility(state)  {
@@ -12,9 +13,12 @@ const cartSlice = createSlice({
     },
     showNotification(state, action){
       state.notification = { status: action.payload.status, title: action.payload.title, message: action.payload.message}
-    }
+    },
+    setCartItems: (state, action) => {
+      state.items = action.payload;
+    },
   },
 });
 
-export const { toggleCartVisibility, showNotification } = cartSlice.actions;
+export const { toggleCartVisibility, showNotification ,setCartItems } = cartSlice.actions;
 export default cartSlice.reducer;
